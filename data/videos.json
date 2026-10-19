@@ -1,0 +1,13 @@
+{
+  "videos": [
+    {"vimeo": "1072597168", "titre": "Demo Reel", "titre_en": "Demo Reel", "annee": 2025, "description": "Bande démo — environnements, personnages et hard-surface.", "description_en": "Demo reel — environments, characters and hard-surface."},
+    {"vimeo": "1211765607", "titre": "Mars", "titre_en": "Mars", "annee": 2026, "description": "Court-métrage spatial sur la surface martienne.", "description_en": "Space short film on the Martian surface."},
+    {"vimeo": "1211760000", "titre": "Last Light", "titre_en": "Last Light", "annee": 2026, "description": "Projet cinématique « Last Light ».", "description_en": "“Last Light” cinematic project."},
+    {"vimeo": "1045874860", "titre": "Nature Demo", "titre_en": "Nature Demo", "annee": 2025, "description": "Environnements naturels en temps réel.", "description_en": "Real-time natural environments."},
+    {"vimeo": "1045091893", "titre": "Face Animation", "titre_en": "Face Animation", "annee": 2025, "description": "Animation faciale MetaHuman.", "description_en": "MetaHuman facial animation."},
+    {"vimeo": "1038709859", "titre": "Trailer Demo", "titre_en": "Trailer Demo", "annee": 2024, "description": "Bande-annonce de projets.", "description_en": "Project trailer."},
+    {"vimeo": "198417563", "titre": "LUX", "annee": 2017, "description": ""},
+    {"vimeo": "220969928", "titre": "Ruwa", "annee": 2017, "description": ""},
+    {"vimeo": "198416276", "titre": "Retimer", "annee": 2017, "description": ""}
+  ]
+}
