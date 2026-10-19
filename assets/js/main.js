@@ -93,7 +93,7 @@
   const cache = {};
   function loadJSON(name) {
     if (!cache[name]) {
-      cache[name] = fetch(`${ROOT}data/${name}.json`, { cache: "no-cache" }).then((r) => {
+      cache[name] = fetch(`${ROOT}data/${name}.json`).then((r) => {
         if (!r.ok) throw new Error(`data/${name}.json introuvable`);
         return r.json();
       }).then(localize);
@@ -108,16 +108,37 @@
     container.innerHTML = `<p class="empty-state">${local ? T.errLocal : T.errData}</p>`;
   }
 
-  // Images : chemin complet et miniature (la miniature est facultative)
+  // Images : trois tailles par rendu
+  //   images/portfolio/miniatures/nom.webp  (960 px)   → galerie, vignettes
+  //   images/portfolio/grandes/nom.webp     (1920 px)  → diaporama, visionneuse
+  //   images/portfolio/nom.jpg              (original) → écrans très larges, et repli si une version manque
   const baseName = (file) => file.replace(/\.[^.]+$/, "");
   const imageSrc = (img) => `${ROOT}images/portfolio/${img.fichier}`;
   const thumbSrc = (img) =>
     img.miniature ? `${ROOT}images/portfolio/miniatures/${img.miniature}` : `${ROOT}images/portfolio/miniatures/${baseName(img.fichier)}.webp`;
+  const largeSrc = (img) => `${ROOT}images/portfolio/grandes/${baseName(img.fichier)}.webp`;
 
-  function imgTag(img, { cls = "", sizes = "100vw", eager = false, full = false } = {}) {
+  // Pour un affichage plein écran : la WebP 1920 suffit sauf sur les très grands écrans haute densité
+  const screenSrc = (img) => (window.innerWidth * (window.devicePixelRatio || 1) > 2200 ? imageSrc(img) : largeSrc(img));
+
+  const abs = (url) => new URL(url, location.href).href;
+
+  // Charge la première URL disponible dans la liste
+  function setSrcWithFallback(el, urls) {
+    const list = [...new Set(urls)];
+    let k = 0;
+    el.onerror = () => {
+      k += 1;
+      if (k < list.length) el.src = list[k];
+      else el.onerror = null;
+    };
+    el.src = list[0];
+  }
+
+  function imgTag(img, { cls = "", sizes = "100vw", eager = false, responsive = false } = {}) {
     const dims = img.largeur && img.hauteur ? ` width="${img.largeur}" height="${img.hauteur}"` : "";
-    const src = full ? imageSrc(img) : thumbSrc(img);
-    return `<img src="${src}" data-fallback="${imageSrc(img)}" alt="${escapeHTML(img.titre || "")}"${dims} sizes="${sizes}" class="${cls}" loading="${eager ? "eager" : "lazy"}" decoding="async">`;
+    const srcset = responsive ? ` srcset="${thumbSrc(img)} 960w, ${largeSrc(img)} 1920w"` : "";
+    return `<img src="${thumbSrc(img)}"${srcset} data-fallback="${imageSrc(img)}" alt="${escapeHTML(img.titre || "")}"${dims} sizes="${sizes}" class="${cls}" loading="${eager ? "eager" : "lazy"}" decoding="async">`;
   }
 
   // Fondu à l'arrivée de chaque image + repli sur l'image pleine taille si la miniature manque
@@ -129,7 +150,8 @@
       if (el.complete && el.naturalWidth) ready();
       el.addEventListener("load", ready);
       el.addEventListener("error", () => {
-        if (el.src.endsWith(el.dataset.fallback)) return;
+        if (el.src === abs(el.dataset.fallback)) return;
+        el.removeAttribute("srcset"); // sinon le navigateur continuerait d'utiliser le srcset
         el.src = el.dataset.fallback;
       });
     });
@@ -409,7 +431,7 @@
     hero.style.setProperty("--slide-ms", `${SLIDE_MS}ms`);
 
     wrap.innerHTML = slides
-      .map((img, i) => `<div class="hero-slide"><img ${i === 0 ? 'fetchpriority="high"' : ""} src="${i === 0 ? imageSrc(img) : ""}" data-src="${imageSrc(img)}" alt=""></div>`)
+      .map((img, i) => `<div class="hero-slide"><img ${i === 0 ? 'fetchpriority="high"' : ""} alt="" decoding="async"></div>`)
       .join("");
     progress.innerHTML = slides
       .map((img, i) => `<button type="button" aria-label="${T.show}${escapeHTML(img.titre)}" data-i="${i}"></button>`)
@@ -422,7 +444,7 @@
 
     const load = (i) => {
       const im = $("img", slideEls[i]);
-      if (!im.getAttribute("src")) im.src = im.dataset.src;
+      if (!im.getAttribute("src")) setSrcWithFallback(im, [screenSrc(slides[i]), imageSrc(slides[i])]);
       return im;
     };
 
@@ -494,7 +516,7 @@
       .slice(0, 8)
       .map((img, i) => `
         <a class="tile reveal" style="--delay:${(i % 3) * 80}ms" href="${PAGES}portfolios/?image=${encodeURIComponent(baseName(img.fichier))}">
-          ${imgTag(img, { sizes: i === 0 ? "(max-width: 900px) 100vw, 66vw" : "(max-width: 900px) 50vw, 33vw", full: i === 0 })}
+          ${imgTag(img, { sizes: i === 0 ? "(max-width: 900px) 100vw, 66vw" : "(max-width: 900px) 50vw, 33vw", responsive: i === 0 })}
           <span class="tile-label"><span>${escapeHTML(img.titre)}</span><small>${escapeHTML(catName[img.categorie] || "")}</small></span>
         </a>`)
       .join("");
@@ -543,7 +565,8 @@
     if (!cta || !bg) return;
     const pick = images.find((i) => i.fichier.startsWith("au-dessus")) || images[images.length - 1];
     if (!pick) return;
-    bg.innerHTML = `<img src="${imageSrc(pick)}" alt="" loading="lazy" decoding="async">`;
+    bg.innerHTML = `<img alt="" loading="lazy" decoding="async">`;
+    setSrcWithFallback($("img", bg), [largeSrc(pick), imageSrc(pick)]);
     if (reduceMotion) return;
     const img = $("img", bg);
     let inView = false;
@@ -730,7 +753,7 @@
 
     const preload = (k) => {
       const im = images[list[(k + list.length) % list.length]];
-      if (im) new Image().src = imageSrc(im);
+      if (im) new Image().src = screenSrc(im);
     };
 
     const render = (dir = 0) => {
@@ -738,17 +761,20 @@
       const apply = () => {
         img.classList.add("is-loading");
         img.alt = data.titre || "";
-        // Affiche d'abord la miniature (déjà en cache), puis la pleine résolution
-        img.src = thumbSrc(data);
+        // Affiche d'abord la miniature (déjà en cache), puis la version adaptée à l'écran
+        setSrcWithFallback(img, [thumbSrc(data), imageSrc(data)]);
         const full = new Image();
         full.onload = () => {
           if (images[list[pos]] !== data) return;
+          img.onerror = null;
           img.src = full.src;
           img.classList.remove("is-loading");
         };
-        full.onerror = () => img.classList.remove("is-loading");
-        full.src = imageSrc(data);
-        img.onerror = () => { if (!img.src.endsWith(imageSrc(data))) img.src = imageSrc(data); };
+        full.onerror = () => {
+          if (full.src !== abs(imageSrc(data))) full.src = imageSrc(data);
+          else img.classList.remove("is-loading");
+        };
+        full.src = screenSrc(data);
         img.classList.remove("is-swapping-next", "is-swapping-prev");
         title.textContent = data.titre || "";
         cat.textContent = catName[data.categorie] || "";

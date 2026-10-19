@@ -36,7 +36,12 @@ L'ordre des lignes est l'ordre d'affichage : mets les nouveautés en haut.
 > ⚠️ Attention aux virgules : chaque ligne se termine par une virgule, **sauf la dernière** de la liste.
 > En cas de doute, colle le contenu du fichier sur https://jsonlint.com pour vérifier.
 
-*Facultatif :* une miniature légère `images/portfolio/miniatures/foret-nocturne.webp` (960 px de large) rend la galerie plus rapide. Sans elle, le site utilise l'image complète automatiquement.
+*Facultatif, mais plus rapide sur mobile :* deux versions WebP légères du même nom :
+- `images/portfolio/miniatures/foret-nocturne.webp` — 960 px de large (galerie)
+- `images/portfolio/grandes/foret-nocturne.webp` — 1920 px de large (diaporama, visionneuse)
+
+Sans elles, le site utilise automatiquement le JPG : tout fonctionne, c'est juste plus lourd.
+Pour les créer sans logiciel : https://squoosh.app (glisser l'image, choisir WebP, régler la largeur, télécharger).
 
 ### Ajouter une catégorie
 Ajoute une ligne dans `"categories"` en haut de `portfolio.json` :
@@ -83,6 +88,7 @@ videos/index.html       Vidéos
 contact/index.html      Contact
 en/                     Les mêmes pages, en anglais
 data/                   ← le contenu (à modifier)
-images/portfolio/       ← les rendus
+images/portfolio/       ← les rendus (JPG) + miniatures/ et grandes/ (WebP)
+images/site/            Favicon, icônes, images de partage (partage-fr.jpg, partage-en.jpg)
 assets/css, assets/js   Style et animations (pas besoin d'y toucher)
 ```
