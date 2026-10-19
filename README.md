@@ -74,18 +74,6 @@ Ouvrir directement `index.html` ne suffit pas : le navigateur refuse de lire les
 
 ---
 
-## Mettre en ligne
-
-Le site est 100 % statique : il suffit d'envoyer **tout le dossier** chez n'importe quel hébergeur statique, par exemple :
-
-- **Netlify** : glisser-déposer le dossier sur https://app.netlify.com/drop
-- **Cloudflare Pages** ou **GitHub Pages**
-
-Les adresses de l'ancien site (`/portfolios/`, `/videos/`, `/contact/`) sont conservées.
-La version anglaise est sous `/en/` (`/en/portfolios/`, `/en/videos/`, `/en/contact/`).
-
----
-
 ## Structure
 
 ```
