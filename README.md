@@ -9,7 +9,7 @@ Les deux versions lisent les mêmes fichiers `data/` : une image ajoutée appara
 | -------------------------------- | ----------------------- |
 | Ajouter / retirer une image      | `data/portfolio.json`   |
 | Ajouter / retirer une vidéo      | `data/videos.json`      |
-| Changer courriel, téléphone, ville | `data/site.json`      |
+| Changer courriel, téléphone, ville, lien IMDb | `data/site.json` |
 
 Ouvre ces fichiers avec un éditeur de texte (TextEdit en mode « texte brut », ou mieux : VS Code).
 
@@ -52,12 +52,12 @@ puis utilise `"categorie": "vehicule"` sur les images.
 Mets la vidéo sur Vimeo (ou YouTube), puis ajoute une ligne dans `data/videos.json` :
 
 ```json
-{"vimeo": "1072597168", "titre": "Demo Reel", "titre_en": "Demo Reel", "annee": 2025, "description": "Courte description.", "description_en": "Short description."},
+{"vimeo": "1072597168", "titre": "Demo Reel", "titre_en": "Demo Reel", "annee": 2025},
 ```
 
 - Le numéro Vimeo est la fin de l'adresse : `vimeo.com/`**`1072597168`**.
 - Pour YouTube, remplace `"vimeo"` par `"youtube"` avec l'identifiant (`youtube.com/watch?v=`**`XXXXXXXX`**).
-- `titre_en` et `description_en` sont facultatifs (version anglaise).
+- `titre_en` est facultatif (titre en anglais).
 - La vignette est récupérée automatiquement.
 - **La première vidéo de la liste** est affichée en grand en haut de la page Vidéos.
 

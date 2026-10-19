@@ -1003,7 +1003,6 @@ button, [role="button"], .chip, .btn, .nav a {
 .video-feature .video-info h2 { font-size: clamp(28px, 3.4vw, 44px); }
 .video-info p { color: var(--text-muted); font-size: 15px; }
 .video-info .meta { font-family: var(--font-display); font-size: 13px; color: var(--text-faint); white-space: nowrap; }
-.video-desc { flex-basis: 100%; }
 
 .video-grid {
   display: grid;
@@ -1087,4 +1086,11 @@ button, [role="button"], .chip, .btn, .nav a {
   .tile img, .gallery-item img, .player img, .discipline-bg img { transition: opacity 400ms ease !important; transform: none !important; }
   .nav a { transform: none !important; }
   ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
+
+/* Boutons de l'appel à l'action + lien externe du contact */
+.cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.ext-btn svg { width: 18px; height: 18px; transition: transform 300ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .ext-btn:hover svg, .btn-ghost:hover svg { transform: translate(2px, -2px); }
 }

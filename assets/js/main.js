@@ -16,7 +16,7 @@
   /* Textes de l'interface, en français et en anglais */
   const T = {
     fr: {
-      errLocal: "Le contenu ne peut pas se charger en ouvrant le fichier directement. Lancez un petit serveur local (voir le fichier LISEZMOI.md).",
+      errLocal: "Le contenu ne peut pas se charger en ouvrant le fichier directement. Lancez un petit serveur local (voir le fichier README.md).",
       errData: "Le contenu n'a pas pu être chargé. Vérifiez que les fichiers du dossier <code>data/</code> sont valides.",
       openMenu: "Ouvrir le menu",
       closeMenu: "Fermer le menu",
@@ -39,7 +39,7 @@
       },
     },
     en: {
-      errLocal: "Content can't load when the file is opened directly. Start a small local server (see LISEZMOI.md).",
+      errLocal: "Content can't load when the file is opened directly. Start a small local server (see README.md).",
       errData: "The content could not be loaded. Check that the files in the <code>data/</code> folder are valid.",
       openMenu: "Open menu",
       closeMenu: "Close menu",
@@ -265,6 +265,13 @@
         } else {
           el.textContent = site[key];
         }
+      });
+      // Liens externes (IMDb…) : la version anglaise du site ouvre IMDb en anglais
+      $$("[data-site-link]").forEach((el) => {
+        let url = site[el.dataset.siteLink];
+        if (!url) return;
+        if (LANG === "en") url = url.replace("imdb.com/fr/", "imdb.com/");
+        el.href = url;
       });
       $$("[data-copy-from]").forEach((btn) => {
         const val = site[btn.dataset.copyFrom];
@@ -873,7 +880,6 @@
       <div class="video-info">
         <${tag}>${escapeHTML(v.titre || "")}</${tag}>
         ${v.annee ? `<span class="meta">${escapeHTML(String(v.annee))}</span>` : ""}
-        ${v.description ? `<p class="video-desc">${escapeHTML(v.description)}</p>` : ""}
       </div>`;
 
     feature.innerHTML = `<div class="reveal">${playerHTML(first)}${info(first, "h2")}</div>`;
