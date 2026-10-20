@@ -12,7 +12,7 @@
   --line-strong: rgba(255, 255, 255, 0.18);
   --text: #ededee;
   --text-muted: #a1a1a8;
-  --text-faint: #6d6d74;
+  --text-faint: #8b8b93;
   --accent: #ff6b1f;
   --accent-ink: #120700;
 
@@ -42,6 +42,7 @@
 *::after { box-sizing: border-box; }
 
 html {
+  scroll-padding-top: calc(var(--header-h) + 88px);
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
@@ -376,14 +377,14 @@ button, [role="button"], .chip, .btn, .nav a {
   font-size: clamp(16px, 1.6vw, 19px);
 }
 
-/* Révélation au défilement */
-.reveal {
+/* Révélation au défilement (seulement si le JavaScript tourne) */
+.js .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 900ms var(--ease-out), transform 1000ms var(--ease-out);
   transition-delay: var(--delay, 0ms);
 }
-.reveal.is-visible { opacity: 1; transform: none; }
+.js .reveal.is-visible { opacity: 1; transform: none; }
 
 /* Titre découpé en mots */
 .split .word {
@@ -393,14 +394,14 @@ button, [role="button"], .chip, .btn, .nav a {
   padding-bottom: 0.08em;
   margin-bottom: -0.08em;
 }
-.split .word > span {
-  display: inline-block;
+.split .word > span { display: inline-block; }
+.js .split .word > span {
   transform: translateY(105%);
   transition: transform 1100ms var(--ease-out);
   transition-delay: calc(var(--i, 0) * 70ms + var(--base, 0ms));
 }
-.split.is-visible .word > span,
-.is-loaded .hero .split .word > span { transform: none; }
+.js .split.is-visible .word > span,
+.js.is-loaded .hero .split .word > span { transform: none; }
 
 /* --------------------------------------------------------------------------
    Accueil - Hero
@@ -531,13 +532,13 @@ button, [role="button"], .chip, .btn, .nav a {
 }
 
 /* Entrée du hero au chargement */
-.hero [data-enter] {
+.js .hero [data-enter] {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 900ms var(--ease-out), transform 900ms var(--ease-out);
   transition-delay: var(--delay, 0ms);
 }
-.is-loaded .hero [data-enter] { opacity: 1; transform: none; }
+.js.is-loaded .hero [data-enter] { opacity: 1; transform: none; }
 
 @media (max-width: 760px) {
   .hero-bottom { grid-template-columns: 1fr; }
@@ -844,7 +845,7 @@ button, [role="button"], .chip, .btn, .nav a {
 .chip:active { transform: scale(0.96); }
 .chip sup { font-size: 10px; color: var(--text-faint); transition: color 250ms ease; }
 .chip[aria-pressed="true"] { color: var(--accent-ink); }
-.chip[aria-pressed="true"] sup { color: rgba(18, 7, 0, 0.6); }
+.chip[aria-pressed="true"] sup { color: var(--accent-ink); }
 @media (hover: hover) and (pointer: fine) {
   .chip:hover:not([aria-pressed="true"]) { color: var(--text); }
 }
@@ -1017,10 +1018,6 @@ button, [role="button"], .chip, .btn, .nav a {
 .contact-wrap { padding-bottom: clamp(64px, 10vw, 140px); }
 .contact-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
 .contact-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
   padding: clamp(22px, 3vw, 36px) 0;
   border-bottom: 1px solid var(--line);
 }
@@ -1033,6 +1030,10 @@ button, [role="button"], .chip, .btn, .nav a {
   margin-bottom: 6px;
 }
 .contact-row dd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(19px, 4.4vw, 56px);
@@ -1040,7 +1041,10 @@ button, [role="button"], .chip, .btn, .nav a {
   line-height: 1.15;
   overflow-wrap: break-word;
 }
-.contact-row dd a { transition: color 200ms ease; }
+.contact-row dd a { transition: color 200ms ease; min-width: 0; }
+.contact-row dd > a:first-child, .contact-row dd > span { min-width: 0; }
+.ext-link { display: inline-flex; align-items: center; gap: 0.3em; }
+.ext-link svg { width: 0.7em; height: 0.7em; flex: none; transition: transform 300ms var(--ease-out); }
 @media (hover: hover) and (pointer: fine) {
   .contact-row dd a:hover { color: var(--accent); }
 }
@@ -1090,7 +1094,34 @@ button, [role="button"], .chip, .btn, .nav a {
 
 /* Boutons de l'appel à l'action + lien externe du contact */
 .cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.ext-btn svg { width: 18px; height: 18px; transition: transform 300ms var(--ease-out); }
 @media (hover: hover) and (pointer: fine) {
-  .ext-btn:hover svg, .btn-ghost:hover svg { transform: translate(2px, -2px); }
+  .ext-link:hover svg, .btn-ghost:hover svg { transform: translate(2px, -2px); }
 }
+
+/* Bouton pause des animations (diaporama, bandeau défilant) */
+.motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px 0 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(10, 10, 11, 0.4);
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--text);
+  transition: transform 160ms var(--ease-out), border-color 200ms ease;
+}
+.motion-toggle:active { transform: scale(0.96); }
+.motion-toggle svg { width: 14px; height: 14px; }
+.motion-toggle .i-play { display: none; }
+.motion-toggle[aria-pressed="true"] .i-play { display: block; }
+.motion-toggle[aria-pressed="true"] .i-pause { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .motion-toggle:hover { border-color: var(--text); }
+}
+.motion-paused .marquee-track,
+.motion-paused .scroll-cue::after,
+.motion-paused .hero-progress button.is-active::after { animation-play-state: paused; }
+.marquee:hover .marquee-track { animation-play-state: paused; }

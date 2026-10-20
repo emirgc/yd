@@ -99,6 +99,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <script>document.documentElement.classList.add("js")</script>
   <script defer src="../../assets/js/main.js"></script>
 </head>
 <body data-page="contact" data-root="../../">
@@ -130,19 +131,20 @@
     <div class="container contact-wrap">
       <dl class="contact-list">
         <div class="contact-row reveal">
-          <div><dt>Email</dt><dd><a data-site="email" href="mailto:youssef.dhane@gmail.com">youssef.dhane@gmail.com</a></dd></div>
-          <button class="copy-btn" type="button" data-copy-from="email" data-copy="youssef.dhane@gmail.com" aria-label="Copy email address"><span class="label">Copy</span><span class="done" aria-hidden="true">Copied</span></button>
+          <dt>Email</dt>
+          <dd><a data-site="email" href="mailto:youssef.dhane@gmail.com">youssef.dhane@gmail.com</a><button class="copy-btn" type="button" data-copy-from="email" data-copy="youssef.dhane@gmail.com" aria-label="Copy email address"><span class="label">Copy</span><span class="done" aria-hidden="true">Copied</span></button></dd>
         </div>
         <div class="contact-row reveal" style="--delay:90ms">
-          <div><dt>Phone</dt><dd><a data-site="telephone" href="tel:+14383677932">+1 (438) 367-7932</a></dd></div>
-          <button class="copy-btn" type="button" data-copy-from="telephone" data-copy="+1 (438) 367-7932" aria-label="Copy phone number"><span class="label">Copy</span><span class="done" aria-hidden="true">Copied</span></button>
+          <dt>Phone</dt>
+          <dd><a data-site="telephone" href="tel:+14383677932">+1 (438) 367-7932</a><button class="copy-btn" type="button" data-copy-from="telephone" data-copy="+1 (438) 367-7932" aria-label="Copy phone number"><span class="label">Copy</span><span class="done" aria-hidden="true">Copied</span></button></dd>
         </div>
         <div class="contact-row reveal" style="--delay:180ms">
-          <div><dt>IMDb</dt><dd><a data-site-link="imdb" href="https://www.imdb.com/name/nm14731249/" target="_blank" rel="noopener">VFX credits<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
-          <a class="copy-btn ext-btn" data-site-link="imdb" href="https://www.imdb.com/name/nm14731249/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+          <dt>IMDb</dt>
+          <dd><a class="ext-link" data-site-link="imdb" href="https://www.imdb.com/name/nm14731249/" target="_blank" rel="noopener">VFX credits<span class="sr-only"> (opens in a new tab)</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></dd>
         </div>
         <div class="contact-row reveal" style="--delay:270ms">
-          <div><dt>Location</dt><dd data-site="ville">Montréal, QC, CANADA</dd></div>
+          <dt>Location</dt>
+          <dd><span data-site="ville">Montréal, QC, CANADA</span></dd>
         </div>
       </dl>
     </div>
@@ -159,5 +161,6 @@
       </nav>
     </div>
   </footer>
+  <p class="sr-only" id="a11y-status" role="status" aria-live="polite"></p>
 </body>
 </html>

@@ -100,6 +100,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="preload" href="./data/portfolio.json" as="fetch" crossorigin>
+  <script>document.documentElement.classList.add("js")</script>
   <script defer src="./assets/js/main.js"></script>
 </head>
 <body data-page="home" data-root="./">
@@ -137,6 +138,11 @@
             </div>
           </div>
           <div class="hero-meta" data-enter style="--delay:900ms">
+            <button class="motion-toggle" type="button" aria-pressed="false" data-label-pause="Pause" data-label-play="Lecture">
+              <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+              <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+              <span class="motion-label">Pause</span>
+            </button>
             <span class="hero-caption" aria-live="off"></span>
             <div class="hero-progress" role="group" aria-label="Choisir une image"></div>
           </div>
@@ -215,5 +221,6 @@
       </nav>
     </div>
   </footer>
+  <p class="sr-only" id="a11y-status" role="status" aria-live="polite"></p>
 </body>
 </html>

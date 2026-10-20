@@ -31,6 +31,8 @@
       next: "Image suivante",
       noVideos: "Aucune vidéo pour le moment.",
       video: "Vidéo",
+      copied: "Copié dans le presse-papiers",
+      shown: (n) => `${n} image${n > 1 ? "s" : ""} affichée${n > 1 ? "s" : ""}`,
       blurbs: {
         environnement: "Paysages, ruines, forêts et villes : des mondes entiers, du terrain au moindre détail.",
         personnage: "Visages et personnages réalistes, MetaHuman, sculpt et lookdev.",
@@ -54,6 +56,8 @@
       next: "Next image",
       noVideos: "No videos yet.",
       video: "Video",
+      copied: "Copied to clipboard",
+      shown: (n) => `${n} image${n > 1 ? "s" : ""} shown`,
       blurbs: {
         environnement: "Landscapes, ruins, forests and cities: entire worlds, from terrain to the smallest detail.",
         personnage: "Realistic faces and characters, MetaHuman, sculpting and lookdev.",
@@ -123,6 +127,22 @@
 
   const abs = (url) => new URL(url, location.href).href;
 
+  // Message lu par les lecteurs d'écran (zone #a11y-status en bas de page)
+  function announce(msg) {
+    const el = $("#a11y-status");
+    if (!el) return;
+    el.textContent = "";
+    setTimeout(() => (el.textContent = msg), 60);
+  }
+
+  // Rend le reste de la page inactif (clavier, lecteurs d'écran) derrière une surface modale
+  function setInert(on, except) {
+    $$("body > header, body > main, body > footer").forEach((el) => {
+      if (except && el.contains(except)) return;
+      el.inert = on;
+    });
+  }
+
   // Charge la première URL disponible dans la liste
   function setSrcWithFallback(el, urls) {
     const list = [...new Set(urls)];
@@ -135,10 +155,10 @@
     el.src = list[0];
   }
 
-  function imgTag(img, { cls = "", sizes = "100vw", eager = false, responsive = false } = {}) {
+  function imgTag(img, { cls = "", sizes = "100vw", eager = false, responsive = false, decorative = false } = {}) {
     const dims = img.largeur && img.hauteur ? ` width="${img.largeur}" height="${img.hauteur}"` : "";
     const srcset = responsive ? ` srcset="${thumbSrc(img)} 960w, ${largeSrc(img)} 1920w"` : "";
-    return `<img src="${thumbSrc(img)}"${srcset} data-fallback="${imageSrc(img)}" alt="${escapeHTML(img.titre || "")}"${dims} sizes="${sizes}" class="${cls}" loading="${eager ? "eager" : "lazy"}" decoding="async">`;
+    return `<img src="${thumbSrc(img)}"${srcset} data-fallback="${imageSrc(img)}" alt="${decorative ? "" : escapeHTML(img.titre || "")}"${dims} sizes="${sizes}" class="${cls}" loading="${eager ? "eager" : "lazy"}" decoding="async">`;
   }
 
   // Fondu à l'arrivée de chaque image + repli sur l'image pleine taille si la miniature manque
@@ -189,6 +209,10 @@
       }
     }, { passive: true });
     update();
+    header.addEventListener("focusin", () => {
+      header.classList.remove("is-hidden");
+      document.body.classList.remove("is-header-hidden");
+    });
 
     const toggle = $(".menu-toggle");
     const nav = $("#nav");
@@ -197,6 +221,7 @@
       document.body.classList.toggle("menu-open", open);
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? T.closeMenu : T.openMenu);
+      $$("body > main, body > footer").forEach((el) => (el.inert = open));
     };
     toggle.addEventListener("click", () => setOpen(!document.body.classList.contains("menu-open")));
     nav.addEventListener("click", (e) => { if (e.target.closest("a")) setOpen(false); });
@@ -477,9 +502,29 @@
       else im.addEventListener("load", show, { once: true });
     };
 
+    // Pause : choix mémorisé, et pause par défaut si le système demande moins d'animations
+    let stored = null;
+    try { stored = localStorage.getItem("yd-motion"); } catch {}
+    let userPaused = stored ? stored === "paused" : reduceMotion;
+    const toggleBtn = $(".motion-toggle", hero);
+    const applyPaused = () => {
+      document.documentElement.classList.toggle("motion-paused", userPaused);
+      if (!toggleBtn) return;
+      toggleBtn.setAttribute("aria-pressed", String(userPaused));
+      $(".motion-label", toggleBtn).textContent = userPaused ? toggleBtn.dataset.labelPlay : toggleBtn.dataset.labelPause;
+    };
+    applyPaused();
+    toggleBtn?.addEventListener("click", () => {
+      userPaused = !userPaused;
+      try { localStorage.setItem("yd-motion", userPaused ? "paused" : "playing"); } catch {}
+      applyPaused();
+      if (userPaused) clearTimeout(timer);
+      else schedule();
+    });
+
     const schedule = () => {
       clearTimeout(timer);
-      if (slides.length < 2 || hero.classList.contains("is-paused")) return;
+      if (slides.length < 2 || userPaused || hero.classList.contains("is-paused")) return;
       timer = setTimeout(() => go(current + 1), SLIDE_MS);
     };
 
@@ -516,7 +561,7 @@
       .slice(0, 8)
       .map((img, i) => `
         <a class="tile reveal" style="--delay:${(i % 3) * 80}ms" href="${PAGES}portfolios/?image=${encodeURIComponent(baseName(img.fichier))}">
-          ${imgTag(img, { sizes: i === 0 ? "(max-width: 900px) 100vw, 66vw" : "(max-width: 900px) 50vw, 33vw", responsive: i === 0 })}
+          ${imgTag(img, { sizes: i === 0 ? "(max-width: 900px) 100vw, 66vw" : "(max-width: 900px) 50vw, 33vw", responsive: i === 0, decorative: true })}
           <span class="tile-label"><span>${escapeHTML(img.titre)}</span><small>${escapeHTML(catName[img.categorie] || "")}</small></span>
         </a>`)
       .join("");
@@ -534,7 +579,7 @@
         const bg = list[0];
         return `
           <a class="discipline reveal" style="--delay:${i * 90}ms" href="${PAGES}portfolios/?categorie=${encodeURIComponent(cat.id)}">
-            ${bg ? `<span class="discipline-bg" aria-hidden="true">${imgTag(bg, { sizes: "25vw" })}</span>` : ""}
+            ${bg ? `<span class="discipline-bg" aria-hidden="true">${imgTag(bg, { sizes: "25vw", decorative: true })}</span>` : ""}
             <span>
               <span class="discipline-num">0${i + 1}</span>
               <h3>${escapeHTML(cat.nom)}</h3>
@@ -690,6 +735,7 @@
         url.searchParams.delete("image");
         history.replaceState(null, "", url);
         applyFilter(true);
+        announce(T.shown(visibleItems().length));
         const top = $(".filters").getBoundingClientRect().top + window.scrollY - 8;
         if (window.scrollY > top) window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
       })
@@ -801,6 +847,7 @@
       render();
       scrollY = window.scrollY;
       document.documentElement.style.overflow = "hidden";
+      setInert(true);
       lb.classList.add("is-open");
       if (!reduceMotion && from) {
         // L'image grandit depuis la vignette cliquée
@@ -824,6 +871,7 @@
     const close = () => {
       lb.classList.remove("is-open");
       document.documentElement.style.overflow = "";
+      setInert(false);
       window.scrollTo(0, scrollY);
       const url = new URL(location.href);
       if (url.searchParams.has("image")) {
@@ -941,6 +989,7 @@
           ta.remove();
         }
         btn.classList.add("is-copied");
+        announce(T.copied);
         clearTimeout(btn._t);
         btn._t = setTimeout(() => btn.classList.remove("is-copied"), 1800);
       });
