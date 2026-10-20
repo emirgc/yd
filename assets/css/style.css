@@ -943,17 +943,20 @@ button, [role="button"], .chip, .btn, .nav a {
 }
 .lb-top { padding-top: calc(12px + env(safe-area-inset-top, 0px)); }
 .lb-bottom { padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+/* Les barres restent toujours au-dessus de l'image */
+.lb-top, .lb-bottom { position: relative; z-index: 1; }
 .lb-title { color: var(--text); font-size: 16px; }
 .lb-stage {
   position: relative;
-  display: grid;
-  place-items: center;
   min-height: 0;
-  padding: 0 var(--gutter);
   touch-action: pan-y pinch-zoom;
 }
+/* L'image tient exactement dans l'espace entre les deux barres */
 .lb-stage img {
-  max-width: 100%;
+  position: absolute;
+  inset: 0 var(--gutter);
+  margin: auto;
+  max-width: calc(100% - 2 * var(--gutter));
   max-height: 100%;
   width: auto; height: auto;
   object-fit: contain;
