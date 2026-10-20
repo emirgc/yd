@@ -108,12 +108,6 @@ button, [role="button"], .chip, .btn, .nav a {
   padding-inline: var(--gutter);
 }
 
-/* Transitions entre pages (navigateurs compatibles) */
-@view-transition { navigation: auto; }
-::view-transition-old(root) { animation: 220ms var(--ease-out) both vt-out; }
-::view-transition-new(root) { animation: 380ms var(--ease-out) both vt-in; }
-@keyframes vt-out { to { opacity: 0; } }
-@keyframes vt-in { from { opacity: 0; transform: translateY(12px); } }
 
 /* --------------------------------------------------------------------------
    En-tête
@@ -1089,7 +1083,6 @@ button, [role="button"], .chip, .btn, .nav a {
   .scroll-cue::after { animation: none; }
   .tile img, .gallery-item img, .player img, .discipline-bg img { transition: opacity 400ms ease !important; transform: none !important; }
   .nav a { transform: none !important; }
-  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
 }
 
 /* Boutons de l'appel à l'action + lien externe du contact */

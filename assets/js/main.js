@@ -285,7 +285,18 @@
       }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 })
     : null;
 
+  // Les entrées attendent les polices (0,6 s max) : sinon le titre s'anime puis « saute »
+  // quand la vraie police remplace la police de secours
+  const fontsReady = Promise.race([
+    document.fonts ? document.fonts.ready : Promise.resolve(),
+    new Promise((r) => setTimeout(r, 600)),
+  ]);
+
   function observeReveals(ctx = document) {
+    fontsReady.then(() => observeRevealsNow(ctx));
+  }
+
+  function observeRevealsNow(ctx) {
     $$(".split", ctx).forEach(splitWords);
     $$(".reveal, .split", ctx).forEach((el) => {
       if (el.classList.contains("is-visible") || el.closest(".hero")) return; // le hero a sa propre entrée
@@ -544,7 +555,7 @@
     const first = load(0);
     const start = () => {
       go(0);
-      requestAnimationFrame(() => document.documentElement.classList.add("is-loaded"));
+      fontsReady.then(() => requestAnimationFrame(() => document.documentElement.classList.add("is-loaded")));
     };
     if (first.complete && first.naturalWidth) start();
     else {
