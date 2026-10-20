@@ -1,4 +1,4 @@
-# Site de Youssef Dhane — guide de mise à jour
+# Site de Youssef Dhane - guide de mise à jour
 
 Pas besoin de toucher au code. Tout le contenu se modifie dans les 3 fichiers du dossier `data/`.
 
@@ -27,7 +27,7 @@ Ouvre ces fichiers avec un éditeur de texte (TextEdit en mode « texte brut »,
 
 - **fichier** : le nom exact du fichier.
 - **titre** : ce qui s'affiche sous l'image (accents permis).
-- **titre_en** : le titre en anglais (facultatif — sans lui, le titre français s'affiche aussi sur le site anglais).
+- **titre_en** : le titre en anglais (facultatif - sans lui, le titre français s'affiche aussi sur le site anglais).
 - **categorie** : `environnement`, `personnage`, `hard-surface` ou `espace`.
 - **vedette** : `true` pour que l'image apparaisse dans le diaporama et la sélection de l'accueil.
 
@@ -37,8 +37,8 @@ L'ordre des lignes est l'ordre d'affichage : mets les nouveautés en haut.
 > En cas de doute, colle le contenu du fichier sur https://jsonlint.com pour vérifier.
 
 *Facultatif, mais plus rapide sur mobile :* deux versions WebP légères du même nom :
-- `images/portfolio/miniatures/foret-nocturne.webp` — 960 px de large (galerie)
-- `images/portfolio/grandes/foret-nocturne.webp` — 1920 px de large (diaporama, visionneuse)
+- `images/portfolio/miniatures/foret-nocturne.webp` - 960 px de large (galerie)
+- `images/portfolio/grandes/foret-nocturne.webp` - 1920 px de large (diaporama, visionneuse)
 
 Sans elles, le site utilise automatiquement le JPG : tout fonctionne, c'est juste plus lourd.
 Pour les créer sans logiciel : https://squoosh.app (glisser l'image, choisir WebP, régler la largeur, télécharger).

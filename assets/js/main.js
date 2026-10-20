@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Youssef Dhane — Artiste 3D
+   Youssef Dhane - Artiste 3D
    Tout le contenu (images, vidéos, coordonnées) vient des fichiers du
    dossier /data. Ce script n'a normalement pas besoin d'être modifié.
    ========================================================================== */

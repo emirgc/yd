@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Youssef Dhane — Artiste 3D
+   Youssef Dhane - Artiste 3D
    Feuille de style unique. Les couleurs et polices se règlent dans :root.
    ========================================================================== */
 
@@ -403,7 +403,7 @@ button, [role="button"], .chip, .btn, .nav a {
 .is-loaded .hero .split .word > span { transform: none; }
 
 /* --------------------------------------------------------------------------
-   Accueil — Hero
+   Accueil - Hero
    -------------------------------------------------------------------------- */
 .hero {
   position: relative;
@@ -546,7 +546,7 @@ button, [role="button"], .chip, .btn, .nav a {
 }
 
 /* --------------------------------------------------------------------------
-   Accueil — Bandeau défilant
+   Accueil - Bandeau défilant
    -------------------------------------------------------------------------- */
 .marquee {
   border-block: 1px solid var(--line);
@@ -580,7 +580,7 @@ button, [role="button"], .chip, .btn, .nav a {
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* --------------------------------------------------------------------------
-   Accueil — Sélection
+   Accueil - Sélection
    -------------------------------------------------------------------------- */
 .featured-grid {
   display: grid;
@@ -651,7 +651,7 @@ button, [role="button"], .chip, .btn, .nav a {
 }
 
 /* --------------------------------------------------------------------------
-   Accueil — Disciplines
+   Accueil - Disciplines
    -------------------------------------------------------------------------- */
 .disciplines {
   display: grid;
@@ -799,7 +799,7 @@ button, [role="button"], .chip, .btn, .nav a {
 }
 
 /* --------------------------------------------------------------------------
-   Portfolio — filtres
+   Portfolio - filtres
    -------------------------------------------------------------------------- */
 .filters {
   position: sticky;
@@ -860,7 +860,7 @@ button, [role="button"], .chip, .btn, .nav a {
 .chips:not(.is-ready) .chip-indicator { transition: none; }
 
 /* --------------------------------------------------------------------------
-   Portfolio — galerie maçonnerie
+   Portfolio - galerie maçonnerie
    -------------------------------------------------------------------------- */
 .gallery {
   columns: 3 340px;
