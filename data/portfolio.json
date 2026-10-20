@@ -23,7 +23,7 @@
     {"fichier": "desert.jpg", "titre": "Désert", "titre_en": "Desert", "categorie": "environnement", "vedette": false, "largeur": 1920, "hauteur": 1080},
     {"fichier": "foret-zabouromkom.jpg", "titre": "Zabouromkom", "titre_en": "Zabouromkom", "categorie": "environnement", "vedette": false, "largeur": 2400, "hauteur": 1350},
     {"fichier": "falaises.jpg", "titre": "Falaises", "titre_en": "Cliffs", "categorie": "environnement", "vedette": false, "largeur": 2400, "hauteur": 1350},
-    {"fichier": "nuages-de-fumee.jpg", "titre": "Nuages de fumée", "titre_en": "Smoke Clouds", "categorie": "environnement", "vedette": false, "largeur": 1920, "hauteur": 1080},
+    {"fichier": "avion-nuages.jpg", "titre": "Avion au-dessus des nuages", "titre_en": "Plane Above the Clouds", "categorie": "environnement", "vedette": false, "largeur": 1920, "hauteur": 1080},
     {"fichier": "ruines.jpg", "titre": "Ruines", "titre_en": "Ruins", "categorie": "environnement", "vedette": false, "largeur": 2400, "hauteur": 1350},
     {"fichier": "rochers-2.jpg", "titre": "Rochers II", "titre_en": "Rocks II", "categorie": "environnement", "vedette": false, "largeur": 2400, "hauteur": 1350},
     {"fichier": "rochers.jpg", "titre": "Rochers", "titre_en": "Rocks", "categorie": "environnement", "vedette": false, "largeur": 2400, "hauteur": 1350},
