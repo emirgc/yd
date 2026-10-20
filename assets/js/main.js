@@ -36,7 +36,7 @@
       blurbs: {
         environnement: "Paysages, ruines, forêts et villes : des mondes entiers, du terrain au moindre détail.",
         personnage: "Visages et personnages réalistes, MetaHuman, sculpt et lookdev.",
-        "hard-surface": "Véhicules, objets et produits modélisés avec précision.",
+        "hard-surface": "Véhicules, objets et produits, conçus avec précision.",
         espace: "Planètes, orbites et horizons lointains.",
       },
     },
@@ -61,7 +61,7 @@
       blurbs: {
         environnement: "Landscapes, ruins, forests and cities: entire worlds, from terrain to the smallest detail.",
         personnage: "Realistic faces and characters, MetaHuman, sculpting and lookdev.",
-        "hard-surface": "Vehicles, objects and products modeled with precision.",
+        "hard-surface": "Vehicles, objects and products, crafted with precision.",
         espace: "Planets, orbits and distant horizons.",
       },
     },
