@@ -33,12 +33,6 @@
       video: "Vidéo",
       copied: "Copié dans le presse-papiers",
       shown: (n) => `${n} image${n > 1 ? "s" : ""} affichée${n > 1 ? "s" : ""}`,
-      blurbs: {
-        environnement: "Paysages, ruines, forêts et villes : des mondes entiers, du terrain au moindre détail.",
-        personnage: "Visages et personnages réalistes, MetaHuman, sculpt et lookdev.",
-        "hard-surface": "Véhicules, objets et produits, conçus avec précision.",
-        espace: "Planètes, orbites et horizons lointains.",
-      },
     },
     en: {
       errLocal: "Content can't load when the file is opened directly. Start a small local server (see README.md).",
@@ -58,12 +52,6 @@
       video: "Video",
       copied: "Copied to clipboard",
       shown: (n) => `${n} image${n > 1 ? "s" : ""} shown`,
-      blurbs: {
-        environnement: "Landscapes, ruins, forests and cities: entire worlds, from terrain to the smallest detail.",
-        personnage: "Realistic faces and characters, MetaHuman, sculpting and lookdev.",
-        "hard-surface": "Vehicles, objects and products, crafted with precision.",
-        espace: "Planets, orbits and distant horizons.",
-      },
     },
   }[LANG];
 
@@ -583,7 +571,6 @@
   function renderDisciplines(categories, images) {
     const wrap = $("#disciplines");
     if (!wrap) return;
-    const blurbs = T.blurbs;
     wrap.innerHTML = categories
       .map((cat, i) => {
         const list = images.filter((im) => im.categorie === cat.id);
@@ -594,7 +581,6 @@
             <span>
               <span class="discipline-num">0${i + 1}</span>
               <h3>${escapeHTML(cat.nom)}</h3>
-              ${blurbs[cat.id] ? `<p>${blurbs[cat.id]}</p>` : ""}
             </span>
             <span class="discipline-count">${T.renders(list.length)} ${ICONS.arrow}</span>
           </a>`;
