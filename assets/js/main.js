@@ -20,9 +20,9 @@
       errData: "Le contenu n'a pas pu être chargé. Vérifiez que les fichiers du dossier <code>data/</code> sont valides.",
       openMenu: "Ouvrir le menu",
       closeMenu: "Fermer le menu",
-      play: "Lire la vidéo : ",
-      show: "Afficher : ",
-      enlarge: "Agrandir : ",
+      play: (t) => `Lire la vidéo : ${t}`,
+      show: (t) => `Afficher : ${t}`,
+      enlarge: (t) => `Agrandir : ${t}`,
       all: "Tout",
       renders: (n) => `${n} rendu${n > 1 ? "s" : ""}`,
       viewer: "Visionneuse d'images",
@@ -39,9 +39,9 @@
       errData: "The content could not be loaded. Check that the files in the <code>data/</code> folder are valid.",
       openMenu: "Open menu",
       closeMenu: "Close menu",
-      play: "Play video: ",
-      show: "Show: ",
-      enlarge: "Enlarge: ",
+      play: (t) => `Play video: ${t}`,
+      show: (t) => `Show: ${t}`,
+      enlarge: (t) => `Enlarge: ${t}`,
       all: "All",
       renders: (n) => `${n} render${n > 1 ? "s" : ""}`,
       viewer: "Image viewer",
@@ -54,6 +54,32 @@
       shown: (n) => `${n} image${n > 1 ? "s" : ""} shown`,
     },
   }[LANG];
+
+  // Textes modifiables dans le CMS (/admin), injectés dans la page par le gabarit.
+  // Ils remplacent les valeurs ci-dessus, qui ne servent que de secours.
+  try {
+    const el = document.getElementById("textes-interface");
+    const x = el ? JSON.parse(el.textContent) : {};
+    const fill = (s, v) => String(s).replace(/\{(\w+)\}/g, (m, k) => (v[k] != null ? v[k] : m));
+    const str = { openMenu: "ouvrir_menu", closeMenu: "fermer_menu", all: "tout", viewer: "visionneuse", close: "fermer", prev: "precedente", next: "suivante", noVideos: "aucune_video", video: "video", copied: "copie_presse_papiers", errLocal: "erreur_local", errData: "erreur_donnees" };
+    Object.entries(str).forEach(([k, src]) => { if (x[src]) T[k] = x[src]; });
+    const withTitle = { play: "lire_video", show: "afficher", enlarge: "agrandir" };
+    Object.entries(withTitle).forEach(([k, src]) => { if (x[src]) T[k] = (t) => fill(x[src], { titre: t }); });
+    const plural = { renders: "rendu", shown: "images_affichees" };
+    Object.entries(plural).forEach(([k, src]) => {
+      const one = x[`${src}_un`], many = x[`${src}_plusieurs`];
+      if (one && many) T[k] = (n) => fill(n > 1 ? many : one, { n });
+    });
+  } catch (err) {
+    console.warn(err);
+  }
+
+  // Le CMS enregistre les images avec leur chemin (« /images/portfolio/nom.jpg ») : on ne garde que le nom
+  function normalize(data) {
+    if (data && Array.isArray(data.images))
+      data.images.forEach((img) => { if (img.fichier) img.fichier = String(img.fichier).split("/").pop(); });
+    return data;
+  }
 
   // En anglais, utilise les champs « _en » des fichiers JSON quand ils existent
   function localize(data) {
@@ -88,7 +114,7 @@
       cache[name] = fetch(`${ROOT}data/${name}.json`).then((r) => {
         if (!r.ok) throw new Error(`data/${name}.json introuvable`);
         return r.json();
-      }).then(localize);
+      }).then(normalize).then(localize);
     }
     return cache[name];
   }
@@ -316,7 +342,7 @@
       $$("[data-site-link]").forEach((el) => {
         let url = site[el.dataset.siteLink];
         if (!url) return;
-        if (LANG === "en") url = url.replace("imdb.com/fr/", "imdb.com/");
+        if (LANG === "en") url = site[`${el.dataset.siteLink}_en`] || url.replace("imdb.com/fr/", "imdb.com/");
         el.href = url;
       });
       $$("[data-copy-from]").forEach((btn) => {
@@ -393,7 +419,7 @@
     return `
       <div class="player" data-video>
         <img alt="" loading="lazy" decoding="async">
-        <button class="player-btn" type="button" aria-label="${T.play}${escapeHTML(video.titre || "")}">
+        <button class="player-btn" type="button" aria-label="${T.play(escapeHTML(video.titre || ""))}">
           <span class="play">${ICONS.play}</span>
         </button>
       </div>`;
@@ -458,7 +484,7 @@
       .map((img, i) => `<div class="hero-slide"><img ${i === 0 ? 'fetchpriority="high"' : ""} alt="" decoding="async"></div>`)
       .join("");
     progress.innerHTML = slides
-      .map((img, i) => `<button type="button" aria-label="${T.show}${escapeHTML(img.titre)}" data-i="${i}"></button>`)
+      .map((img, i) => `<button type="button" aria-label="${T.show(escapeHTML(img.titre))}" data-i="${i}"></button>`)
       .join("");
 
     const slideEls = $$(".hero-slide", wrap);
@@ -672,7 +698,7 @@
     // Galerie
     gallery.innerHTML = images
       .map((img, i) => `
-        <a class="gallery-item" href="${imageSrc(img)}" data-index="${i}" data-cat="${escapeHTML(img.categorie || "")}" aria-label="${T.enlarge}${escapeHTML(img.titre)}">
+        <a class="gallery-item" href="${imageSrc(img)}" data-index="${i}" data-cat="${escapeHTML(img.categorie || "")}" aria-label="${T.enlarge(escapeHTML(img.titre))}">
           ${imgTag(img, { sizes: "(max-width: 520px) 100vw, (max-width: 1100px) 50vw, 33vw" })}
           <span class="tile-label"><span>${escapeHTML(img.titre)}</span><small>${escapeHTML(catName[img.categorie] || "")}</small></span>
         </a>`)

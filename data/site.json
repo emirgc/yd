@@ -1,7 +1,25 @@
 {
+  "nom": "Youssef Dhane",
   "email": "youssef.dhane@gmail.com",
   "telephone": "+1 (438) 367-7932",
   "ville": "Montréal, QC, CANADA",
   "demoReelVimeo": "1072597168",
-  "imdb": "https://www.imdb.com/fr/name/nm14731249/"
+  "imdb": "https://www.imdb.com/fr/name/nm14731249/",
+  "imdb_en": "https://www.imdb.com/name/nm14731249/",
+  "vimeo_profil": "https://vimeo.com/user34173375",
+  "competences": [
+    "3D art",
+    "Visual effects (VFX)",
+    "Environment art",
+    "Hard-surface",
+    "Character art",
+    "Unreal Engine",
+    "MetaHuman",
+    "Lookdev"
+  ],
+  "adresse": {
+    "ville": "Montréal",
+    "region": "QC",
+    "pays": "CA"
+  }
 }

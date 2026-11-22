@@ -1,0 +1,24 @@
+---
+pagination:
+  data: langues
+  size: 1
+  alias: lang
+layout: base.njk
+cle: videos
+chemin: videos/
+dataPage: videos
+schema: { type: CollectionPage, rel: about }
+permalink: "{{ '' if lang == 'fr' else 'en/' }}videos/index.html"
+---
+{%- set V = textes.videos -%}
+    <section class="page-head">
+      <div class="container">
+        <p class="eyebrow reveal">{{ V.surtitre | tr(lang) }}</p>
+        <h1 class="page-title split">{{ V.titre | tr(lang) }}</h1>
+        <p class="page-intro reveal" style="--delay:200ms">{{ V.intro | tr(lang) }}</p>
+      </div>
+    </section>
+    <div class="container">
+      <div class="video-feature" id="video-feature"></div>
+      <div class="video-grid" id="video-grid"></div>
+    </div>

@@ -1,0 +1,41 @@
+---
+pagination:
+  data: langues
+  size: 1
+  alias: lang
+layout: base.njk
+cle: contact
+chemin: contact/
+dataPage: contact
+schema: { type: ContactPage, rel: mainEntity }
+permalink: "{{ '' if lang == 'fr' else 'en/' }}contact/index.html"
+---
+{%- set K = textes.contact -%}
+{%- set ext = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>' | safe -%}
+    <section class="page-head">
+      <div class="container">
+        <p class="eyebrow reveal">{{ K.surtitre | tr(lang) }}</p>
+        <h1 class="page-title split">{{ K.titre | tr(lang) }}</h1>
+        <p class="page-intro reveal" style="--delay:200ms">{{ K.intro | tr(lang) }}</p>
+      </div>
+    </section>
+    <div class="container contact-wrap">
+      <dl class="contact-list">
+        <div class="contact-row reveal">
+          <dt>{{ K.courriel_label | tr(lang) }}</dt>
+          <dd><a data-site="email" href="mailto:{{ site.email }}">{{ site.email }}</a><button class="copy-btn" type="button" data-copy-from="email" data-copy="{{ site.email }}" aria-label="{{ K.courriel_copier_aria | tr(lang) }}"><span class="label">{{ K.copier | tr(lang) }}</span><span class="done" aria-hidden="true">{{ K.copie | tr(lang) }}</span></button></dd>
+        </div>
+        <div class="contact-row reveal" style="--delay:90ms">
+          <dt>{{ K.telephone_label | tr(lang) }}</dt>
+          <dd><a data-site="telephone" href="tel:{{ site.telephone | replace(' ', '') | replace('(', '') | replace(')', '') | replace('-', '') }}">{{ site.telephone }}</a><button class="copy-btn" type="button" data-copy-from="telephone" data-copy="{{ site.telephone }}" aria-label="{{ K.telephone_copier_aria | tr(lang) }}"><span class="label">{{ K.copier | tr(lang) }}</span><span class="done" aria-hidden="true">{{ K.copie | tr(lang) }}</span></button></dd>
+        </div>
+        <div class="contact-row reveal" style="--delay:180ms">
+          <dt>{{ K.imdb_label | tr(lang) }}</dt>
+          <dd><a class="ext-link" data-site-link="imdb" href="{{ site.imdb if lang == 'fr' else (site.imdb_en or site.imdb) }}" target="_blank" rel="noopener">{{ K.imdb_lien | tr(lang) }}<span class="sr-only"> {{ textes.commun.nouvel_onglet | tr(lang) }}</span> {{ ext }}</a></dd>
+        </div>
+        <div class="contact-row reveal" style="--delay:270ms">
+          <dt>{{ K.localisation_label | tr(lang) }}</dt>
+          <dd><span data-site="ville">{{ site.ville }}</span></dd>
+        </div>
+      </dl>
+    </div>

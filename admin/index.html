@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Gestion du site - Youssef Dhane</title>
+  <link rel="icon" href="/images/site/favicon.svg" type="image/svg+xml">
+  <script>
+    // Aperçu local (npm run dev) : le serveur d'Eleventy recharge toutes les pages après chaque
+    // reconstruction. Ici, chaque enregistrement du CMS (dossier local) modifie data/ et
+    // rechargerait le CMS en plein travail. On coupe donc ce rechargement sur cette page seulement.
+    if (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) {
+      window.WebSocket = class extends EventTarget { send() {} close() {} };
+    }
+  </script>
+</head>
+<body>
+  <script src="https://unpkg.com/@sveltia/cms@0.270.0/dist/sveltia-cms.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "ouvrir_menu": {"fr": "Ouvrir le menu", "en": "Open menu"},
+  "fermer_menu": {"fr": "Fermer le menu", "en": "Close menu"},
+  "lire_video": {"fr": "Lire la vidéo : {titre}", "en": "Play video: {titre}"},
+  "afficher": {"fr": "Afficher : {titre}", "en": "Show: {titre}"},
+  "agrandir": {"fr": "Agrandir : {titre}", "en": "Enlarge: {titre}"},
+  "tout": {"fr": "Tout", "en": "All"},
+  "rendu_un": {"fr": "{n} rendu", "en": "{n} render"},
+  "rendu_plusieurs": {"fr": "{n} rendus", "en": "{n} renders"},
+  "visionneuse": {"fr": "Visionneuse d'images", "en": "Image viewer"},
+  "fermer": {"fr": "Fermer", "en": "Close"},
+  "precedente": {"fr": "Image précédente", "en": "Previous image"},
+  "suivante": {"fr": "Image suivante", "en": "Next image"},
+  "aucune_video": {"fr": "Aucune vidéo pour le moment.", "en": "No videos yet."},
+  "video": {"fr": "Vidéo", "en": "Video"},
+  "copie_presse_papiers": {"fr": "Copié dans le presse-papiers", "en": "Copied to clipboard"},
+  "images_affichees_un": {"fr": "{n} image affichée", "en": "{n} image shown"},
+  "images_affichees_plusieurs": {"fr": "{n} images affichées", "en": "{n} images shown"},
+  "erreur_local": {"fr": "Le contenu ne peut pas se charger en ouvrant le fichier directement. Lancez un petit serveur local (voir le fichier README.md).", "en": "Content can't load when the file is opened directly. Start a small local server (see README.md)."},
+  "erreur_donnees": {"fr": "Le contenu n'a pas pu être chargé. Vérifiez que les fichiers du dossier <code>data/</code> sont valides.", "en": "The content could not be loaded. Check that the files in the <code>data/</code> folder are valid."}
+}

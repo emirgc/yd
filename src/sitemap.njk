@@ -1,0 +1,18 @@
+---
+permalink: sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{% for chemin in ["", "portfolios/", "videos/", "contact/"] %}
+{% for l in ["", "en/"] %}
+  <url>
+    <loc>{{ urlSite }}/{{ l }}{{ chemin }}</loc>
+    <lastmod>{{ aujourdhui }}</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="{{ urlSite }}/{{ chemin }}"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ urlSite }}/en/{{ chemin }}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ urlSite }}/{{ chemin }}"/>
+  </url>
+{% endfor %}
+{% endfor %}
+</urlset>

@@ -1,0 +1,104 @@
+{#- Gabarit commun à toutes les pages. Les textes viennent de data/textes/*.json (modifiables dans /admin). -#}
+{%- set fr = lang == "fr" -%}
+{%- set C = textes.commun -%}
+{%- set I = textes.interface -%}
+{%- set T = textes[cle] -%}
+{%- set prof = (1 if chemin else 0) + (0 if fr else 1) -%}
+{%- if racine -%}{%- set root = racine -%}{%- elif prof == 0 -%}{%- set root = "./" -%}{%- elif prof == 1 -%}{%- set root = "../" -%}{%- else -%}{%- set root = "../../" -%}{%- endif -%}
+{%- set pfx = root + ("" if fr else "en/") -%}
+{%- set urlFr = urlSite + "/" + chemin -%}
+{%- set urlEn = urlSite + "/en/" + chemin -%}
+{%- set urlPage = canonique or (urlFr if fr else urlEn) -%}
+{%- set titre = T.seo_titre | tr(lang) -%}
+{%- set desc = T.seo_description | tr(lang) -%}
+{%- set partage = urlSite + (C.partage_image | tr(lang)) -%}
+{%- set imdb = site.imdb if fr else (site.imdb_en or site.imdb) -%}
+{%- set arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>' | safe -%}
+{%- set ext = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>' | safe -%}
+{%- set pages = [
+  { cle: "accueil", chemin: "", label: C.menu_accueil | tr(lang) },
+  { cle: "portfolio", chemin: "portfolios/", label: C.menu_portfolio | tr(lang) },
+  { cle: "videos", chemin: "videos/", label: C.menu_videos | tr(lang) },
+  { cle: "contact", chemin: "contact/", label: C.menu_contact | tr(lang) }
+] -%}
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{ titre }}</title>
+  <meta name="description" content="{{ desc }}">
+  <meta name="theme-color" content="#0a0a0b">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="{{ urlPage }}">
+  {% if not canonique %}
+  <link rel="alternate" hreflang="fr" href="{{ urlFr }}">
+  <link rel="alternate" hreflang="en" href="{{ urlEn }}">
+  <link rel="alternate" hreflang="x-default" href="{{ urlFr }}">
+  {% endif %}
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="{{ 'fr_CA' if fr else 'en_CA' }}">
+  <meta property="og:title" content="{{ titre }}">
+  <meta property="og:description" content="{{ desc }}">
+  <meta property="og:image" content="{{ partage }}">
+  <meta property="og:url" content="{{ urlPage }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ partage }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ C.partage_alt | tr(lang) }}">
+  <meta property="og:site_name" content="{{ site.nom }}">
+  <link rel="icon" href="{{ root }}images/site/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="{{ root }}images/site/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="{{ root }}images/site/apple-touch-icon.png">
+  <link rel="manifest" href="{{ root }}site.webmanifest">
+  {% if schema %}
+  <script type="application/ld+json">
+  {{ cle | jsonld(lang, schema) | safe }}
+  </script>
+  {% endif %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="{{ root }}assets/css/style.css">
+  {% if prechargerPortfolio %}
+  <link rel="preload" href="{{ root }}data/portfolio.json" as="fetch" crossorigin>
+  {% endif %}
+  <script>document.documentElement.classList.add("js")</script>
+  <script id="textes-interface" type="application/json">{{ I | traduire(lang) | json | safe }}</script>
+  <script defer src="{{ root }}assets/js/main.js"></script>
+</head>
+<body data-page="{{ dataPage }}" data-root="{{ root }}">
+  <a class="skip-link" href="#main">{{ C.passer_au_contenu | tr(lang) }}</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{{ pfx }}" aria-label="{{ C.marque_aria | tr(lang) }}"><span class="brand-dot" aria-hidden="true"></span>{{ site.nom }}</a>
+      <nav class="nav" id="nav" aria-label="{{ C.menu_aria | tr(lang) }}">
+        {% for p in pages %}
+        <a href="{{ pfx }}{{ p.chemin }}"{% if p.cle == cle %} aria-current="page"{% endif %}>{{ p.label }}</a>
+        {% endfor %}
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch" role="group" aria-label="{{ C.langue_aria | tr(lang) }}"><a href="{{ root }}{{ chemin }}" hreflang="fr" lang="fr"{% if fr %} aria-current="page"{% endif %} aria-label="Français">FR</a><a href="{{ root }}en/{{ chemin }}" hreflang="en" lang="en"{% if not fr %} aria-current="page"{% endif %} aria-label="English">EN</a></div>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="{{ I.ouvrir_menu | tr(lang) }}"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+{{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span class="year">{{ annee }}</span> {{ C.pied_texte | tr(lang) }}, <span data-site="ville">{{ site.ville }}</span></p>
+      <nav class="footer-links" aria-label="{{ C.pied_menu_aria | tr(lang) }}">
+        {% for p in pages %}
+        <a href="{{ pfx }}{{ p.chemin }}"{% if p.cle == cle %} aria-current="page"{% endif %}>{{ p.label }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </footer>
+  <p class="sr-only" id="a11y-status" role="status" aria-live="polite"></p>
+</body>
+</html>

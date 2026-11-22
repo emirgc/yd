@@ -1,0 +1,19 @@
+---
+layout: base.njk
+lang: fr
+cle: erreur404
+chemin: ""
+racine: /
+canonique: https://youssefdhane.net/404.html
+dataPage: "404"
+permalink: 404.html
+---
+{%- set E = textes.erreur404 -%}
+    <section class="page-head" style="min-height:70svh">
+      <div class="container">
+        <p class="eyebrow reveal">{{ E.surtitre }}</p>
+        <h1 class="page-title split">{{ E.titre }}</h1>
+        <p class="page-intro reveal" style="--delay:200ms">{{ E.intro_fr }}<br><span lang="en">{{ E.intro_en }}</span></p>
+        <p class="reveal" style="margin-top:32px;--delay:300ms;display:flex;flex-wrap:wrap;gap:12px"><a class="btn btn-primary" href="/">{{ E.bouton_fr }}</a><a class="btn btn-ghost" href="/en/" lang="en">{{ E.bouton_en }}</a></p>
+      </div>
+    </section>

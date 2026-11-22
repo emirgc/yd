@@ -1,0 +1,16 @@
+{
+  "seo_titre": {"fr": "Contact - Youssef Dhane, artiste 3D", "en": "Contact - Youssef Dhane, 3D artist"},
+  "seo_description": {"fr": "Contactez Youssef Dhane, artiste 3D à Montréal, pour vos projets 3D et VFX.", "en": "Contact Youssef Dhane, a 3D artist in Montréal, for your 3D and VFX projects."},
+  "surtitre": {"fr": "Parlons-en", "en": "Let’s talk"},
+  "titre": {"fr": "Contact", "en": "Contact"},
+  "intro": {"fr": "Un projet, une collaboration ou une simple question ? Écrivez-moi ou appelez-moi.", "en": "A project, a collaboration or just a question? Email or call me."},
+  "courriel_label": {"fr": "Courriel", "en": "Email"},
+  "courriel_copier_aria": {"fr": "Copier l'adresse courriel", "en": "Copy email address"},
+  "telephone_label": {"fr": "Téléphone", "en": "Phone"},
+  "telephone_copier_aria": {"fr": "Copier le numéro", "en": "Copy phone number"},
+  "copier": {"fr": "Copier", "en": "Copy"},
+  "copie": {"fr": "Copié", "en": "Copied"},
+  "imdb_label": {"fr": "IMDb", "en": "IMDb"},
+  "imdb_lien": {"fr": "Crédits VFX", "en": "VFX credits"},
+  "localisation_label": {"fr": "Localisation", "en": "Location"}
+}

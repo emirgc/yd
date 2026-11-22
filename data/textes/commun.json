@@ -1,0 +1,17 @@
+{
+  "metier": {"fr": "Artiste 3D & VFX", "en": "3D & VFX Artist"},
+  "description_personne": {"fr": "Artiste 3D et VFX : environnements, personnages et hard-surface, sous Unreal Engine et MetaHuman.", "en": "3D and VFX artist: environments, characters and hard-surface, with Unreal Engine and MetaHuman."},
+  "partage_image": {"fr": "/images/site/partage-fr.jpg", "en": "/images/site/partage-en.jpg"},
+  "partage_alt": {"fr": "Youssef Dhane - Artiste 3D et VFX", "en": "Youssef Dhane - 3D and VFX artist"},
+  "passer_au_contenu": {"fr": "Aller au contenu", "en": "Skip to content"},
+  "marque_aria": {"fr": "Youssef Dhane - accueil", "en": "Youssef Dhane - home"},
+  "menu_aria": {"fr": "Navigation principale", "en": "Main navigation"},
+  "menu_accueil": {"fr": "Accueil", "en": "Home"},
+  "menu_portfolio": {"fr": "Portfolio", "en": "Portfolio"},
+  "menu_videos": {"fr": "Vidéos", "en": "Videos"},
+  "menu_contact": {"fr": "Contact", "en": "Contact"},
+  "langue_aria": {"fr": "Langue", "en": "Language"},
+  "pied_texte": {"fr": "Youssef Dhane - Artiste 3D", "en": "Youssef Dhane - 3D Artist"},
+  "pied_menu_aria": {"fr": "Menu du pied de page", "en": "Footer menu"},
+  "nouvel_onglet": {"fr": "(nouvel onglet)", "en": "(opens in a new tab)"}
+}

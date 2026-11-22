@@ -1,0 +1,27 @@
+---
+pagination:
+  data: langues
+  size: 1
+  alias: lang
+layout: base.njk
+cle: portfolio
+chemin: portfolios/
+dataPage: portfolio
+prechargerPortfolio: true
+schema: { type: CollectionPage, rel: about }
+permalink: "{{ '' if lang == 'fr' else 'en/' }}portfolios/index.html"
+---
+{%- set P = textes.portfolio -%}
+    <section class="page-head">
+      <div class="container">
+        <p class="eyebrow reveal">{{ P.surtitre | tr(lang) }}</p>
+        <h1 class="page-title split">{{ P.titre | tr(lang) }}</h1>
+        <p class="page-intro reveal" style="--delay:200ms">{{ P.intro | tr(lang) }}</p>
+      </div>
+    </section>
+    <div class="container">
+      <div class="filters">
+        <div class="chips" id="chips" role="group" aria-label="{{ P.filtre_aria | tr(lang) }}"></div>
+      </div>
+      <div class="gallery" id="gallery"></div>
+    </div>

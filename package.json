@@ -1,0 +1,15 @@
+{
+  "name": "youssefdhane-net",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve",
+    "images": "node scripts/images.mjs _site",
+    "config-cms": "node scripts/config-cms.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.8",
+    "sharp": "^0.35.5"
+  }
+}
