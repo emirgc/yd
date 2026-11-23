@@ -1,13 +1,74 @@
 {
   "videos": [
-    {"vimeo": "1072597168", "titre": "Demo Reel", "titre_en": "Demo Reel", "annee": 2025},
-    {"vimeo": "1211765607", "titre": "Mars", "titre_en": "Mars", "annee": 2026},
-    {"vimeo": "1211760000", "titre": "Last Light", "titre_en": "Last Light", "annee": 2026},
-    {"vimeo": "1045874860", "titre": "Nature Demo", "titre_en": "Nature Demo", "annee": 2025},
-    {"vimeo": "1045091893", "titre": "Face Animation", "titre_en": "Face Animation", "annee": 2025},
-    {"vimeo": "1038709859", "titre": "Trailer Demo", "titre_en": "Trailer Demo", "annee": 2024},
-    {"vimeo": "198417563", "titre": "LUX", "annee": 2017},
-    {"vimeo": "220969928", "titre": "Ruwa", "annee": 2017},
-    {"vimeo": "198416276", "titre": "Retimer", "annee": 2017}
+    {
+      "vimeo": "https://vimeo.com/1248084057?fl=pl&fe=sh",
+      "youtube": "",
+      "titre": "Shugosha",
+      "titre_en": "",
+      "annee": 2026
+    },
+    {
+      "vimeo": "1072597168",
+      "youtube": "",
+      "titre": "Demo Reel",
+      "titre_en": "Demo Reel",
+      "annee": 2025
+    },
+    {
+      "vimeo": "1211765607",
+      "youtube": "",
+      "titre": "Mars",
+      "titre_en": "Mars",
+      "annee": 2026
+    },
+    {
+      "vimeo": "1211760000",
+      "youtube": "",
+      "titre": "Last Light",
+      "titre_en": "Last Light",
+      "annee": 2026
+    },
+    {
+      "vimeo": "1045874860",
+      "youtube": "",
+      "titre": "Nature Demo",
+      "titre_en": "Nature Demo",
+      "annee": 2025
+    },
+    {
+      "vimeo": "1045091893",
+      "youtube": "",
+      "titre": "Face Animation",
+      "titre_en": "Face Animation",
+      "annee": 2025
+    },
+    {
+      "vimeo": "1038709859",
+      "youtube": "",
+      "titre": "Trailer Demo",
+      "titre_en": "Trailer Demo",
+      "annee": 2024
+    },
+    {
+      "vimeo": "198417563",
+      "youtube": "",
+      "titre": "LUX",
+      "titre_en": "",
+      "annee": 2017
+    },
+    {
+      "vimeo": "220969928",
+      "youtube": "",
+      "titre": "Ruwa",
+      "titre_en": "",
+      "annee": 2017
+    },
+    {
+      "vimeo": "198416276",
+      "youtube": "",
+      "titre": "Retimer",
+      "titre_en": "",
+      "annee": 2017
+    }
   ]
 }
