@@ -22,6 +22,13 @@
       "vedette": false
     },
     {
+      "fichier": "/images/portfolio/samurai_envi.jpg",
+      "titre": "Mountain",
+      "titre_en": "Mountain",
+      "categorie": "environnement",
+      "vedette": false
+    },
+    {
       "fichier": "/images/portfolio/mars-astronaute.jpg",
       "titre": "Mars - Astronaute",
       "titre_en": "Mars - Astronaut",
@@ -74,6 +81,13 @@
       "vedette": false,
       "largeur": 2048,
       "hauteur": 854
+    },
+    {
+      "fichier": "/images/portfolio/cancri_surface2-.0000.png",
+      "titre": "Robot",
+      "titre_en": "Robot",
+      "categorie": "environnement",
+      "vedette": false
     },
     {
       "fichier": "/images/portfolio/surface-martienne.jpg",
@@ -130,13 +144,20 @@
       "hauteur": 858
     },
     {
-      "fichier": "/images/portfolio/encelade.jpg",
+      "fichier": "/images/portfolio/enceladus.png",
       "titre": "Encelade",
       "titre_en": "Enceladus",
       "categorie": "espace",
       "vedette": false,
       "largeur": 1920,
       "hauteur": 800
+    },
+    {
+      "fichier": "/images/portfolio/k238_orbit.jpg",
+      "titre": "K238_Orbit",
+      "titre_en": "K238_Orbit",
+      "categorie": "environnement",
+      "vedette": false
     },
     {
       "fichier": "/images/portfolio/ville-de-nuit-2.jpg",
