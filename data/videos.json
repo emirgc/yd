@@ -4,7 +4,14 @@
       "vimeo": "1248084057",
       "youtube": "",
       "titre": "Shugosha_Trailer",
-      "titre_en": "",
+      "titre_en": "Shugosha_Trailer",
+      "annee": 2026
+    },
+    {
+      "vimeo": "1211765607",
+      "youtube": "",
+      "titre": "Mars",
+      "titre_en": "Mars",
       "annee": 2026
     },
     {
@@ -13,13 +20,6 @@
       "titre": "Demo Reel",
       "titre_en": "Demo Reel",
       "annee": 2025
-    },
-    {
-      "vimeo": "1211765607",
-      "youtube": "",
-      "titre": "Mars",
-      "titre_en": "Mars",
-      "annee": 2026
     },
     {
       "vimeo": "1211760000",
@@ -53,21 +53,21 @@
       "vimeo": "198417563",
       "youtube": "",
       "titre": "LUX",
-      "titre_en": "",
+      "titre_en": "LUX",
       "annee": 2017
     },
     {
       "vimeo": "220969928",
       "youtube": "",
       "titre": "Ruwa",
-      "titre_en": "",
+      "titre_en": "Ruwa",
       "annee": 2017
     },
     {
       "vimeo": "198416276",
       "youtube": "",
       "titre": "Retimer",
-      "titre_en": "",
+      "titre_en": "Retimer",
       "annee": 2017
     }
   ]
