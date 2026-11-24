@@ -176,6 +176,13 @@
       "hauteur": 854
     },
     {
+      "fichier": "/images/portfolio/downtown.jpg",
+      "titre": "Downtown",
+      "titre_en": "Downtown",
+      "categorie": "environnement",
+      "vedette": false
+    },
+    {
       "fichier": "/images/portfolio/desert.jpg",
       "titre": "Désert",
       "titre_en": "Desert",
@@ -183,6 +190,13 @@
       "vedette": false,
       "largeur": 1920,
       "hauteur": 1080
+    },
+    {
+      "fichier": "/images/portfolio/gas_station.jpg",
+      "titre": "Gas Station",
+      "titre_en": "Gas Station",
+      "categorie": "environnement",
+      "vedette": false
     },
     {
       "fichier": "/images/portfolio/foret-zabouromkom.jpg",
