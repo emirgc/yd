@@ -32,7 +32,7 @@
       "fichier": "/images/portfolio/mars-astronaute.jpg",
       "titre": "Mars - Astronaute",
       "titre_en": "Mars - Astronaut",
-      "categorie": "espace",
+      "categorie": "environnement",
       "vedette": true,
       "largeur": 2048,
       "hauteur": 854
@@ -41,7 +41,7 @@
       "fichier": "/images/portfolio/tempete-orbitale.jpg",
       "titre": "Tempête orbitale",
       "titre_en": "Orbital Storm",
-      "categorie": "espace",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 2048,
       "hauteur": 854
@@ -59,7 +59,7 @@
       "fichier": "/images/portfolio/terre.jpg",
       "titre": "La Terre",
       "titre_en": "Earth",
-      "categorie": "espace",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 2048,
       "hauteur": 854
@@ -75,7 +75,7 @@
       "fichier": "/images/portfolio/ocean-violet.jpg",
       "titre": "Mer violette",
       "titre_en": "Violet Sea",
-      "categorie": "espace",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 2048,
       "hauteur": 854
@@ -100,7 +100,7 @@
       "fichier": "/images/portfolio/surface-martienne.jpg",
       "titre": "Surface martienne",
       "titre_en": "Martian Surface",
-      "categorie": "espace",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 1920,
       "hauteur": 800
@@ -136,7 +136,7 @@
       "fichier": "/images/portfolio/planete-lointaine.jpg",
       "titre": "Planète lointaine",
       "titre_en": "Distant Planet",
-      "categorie": "espace",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 1920,
       "hauteur": 800
@@ -154,7 +154,7 @@
       "fichier": "/images/portfolio/enceladus.png",
       "titre": "Encelade",
       "titre_en": "Enceladus",
-      "categorie": "espace",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 1920,
       "hauteur": 800
@@ -296,7 +296,7 @@
       "fichier": "/images/portfolio/au-dessus-des-nuages.jpg",
       "titre": "Au-dessus des nuages",
       "titre_en": "Above the Clouds",
-      "categorie": "espace",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 2400,
       "hauteur": 1356
@@ -314,7 +314,7 @@
       "fichier": "/images/portfolio/hublot.jpg",
       "titre": "Hublot",
       "titre_en": "Porthole",
-      "categorie": "espace",
+      "categorie": "environnement",
       "vedette": true,
       "largeur": 2048,
       "hauteur": 1024
@@ -386,7 +386,7 @@
       "fichier": "/images/portfolio/portrait-djou.jpg",
       "titre": "Portrait - Djou",
       "titre_en": "Portrait - Djou",
-      "categorie": "personnage",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 2400,
       "hauteur": 1350
@@ -413,7 +413,7 @@
       "fichier": "/images/portfolio/metahuman-canyon.jpg",
       "titre": "MetaHuman - Canyon",
       "titre_en": "MetaHuman - Canyon",
-      "categorie": "personnage",
+      "categorie": "environnement",
       "vedette": true,
       "largeur": 2400,
       "hauteur": 1350
@@ -458,7 +458,7 @@
       "fichier": "/images/portfolio/metahuman-portrait.jpg",
       "titre": "MetaHuman - Portrait",
       "titre_en": "MetaHuman - Portrait",
-      "categorie": "personnage",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 2400,
       "hauteur": 1350
@@ -530,7 +530,7 @@
       "fichier": "/images/portfolio/interieur-bus.jpg",
       "titre": "Intérieur de bus",
       "titre_en": "Bus Interior",
-      "categorie": "hard-surface",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 2400,
       "hauteur": 1080
@@ -539,7 +539,7 @@
       "fichier": "/images/portfolio/objet-vegetal.jpg",
       "titre": "Objet végétal",
       "titre_en": "Plant Object",
-      "categorie": "hard-surface",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 1920,
       "hauteur": 995
@@ -548,7 +548,7 @@
       "fichier": "/images/portfolio/mazda-rx8.jpg",
       "titre": "Mazda - Vue latérale",
       "titre_en": "Mazda - Side View",
-      "categorie": "hard-surface",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 2000,
       "hauteur": 1000
@@ -557,7 +557,7 @@
       "fichier": "/images/portfolio/motoneige-face.jpg",
       "titre": "Motoneige - Face",
       "titre_en": "Snowmobile - Front",
-      "categorie": "hard-surface",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 2291,
       "hauteur": 1020
@@ -566,7 +566,7 @@
       "fichier": "/images/portfolio/motoneige-detail.jpg",
       "titre": "Motoneige - Détail",
       "titre_en": "Snowmobile - Detail",
-      "categorie": "hard-surface",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 2291,
       "hauteur": 1020
@@ -575,7 +575,7 @@
       "fichier": "/images/portfolio/motoneige-profil.jpg",
       "titre": "Motoneige - Profil",
       "titre_en": "Snowmobile - Profile",
-      "categorie": "hard-surface",
+      "categorie": "environnement",
       "vedette": true,
       "largeur": 2291,
       "hauteur": 1020
@@ -584,7 +584,7 @@
       "fichier": "/images/portfolio/autocar.jpg",
       "titre": "Autocar",
       "titre_en": "Coach",
-      "categorie": "hard-surface",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 1920,
       "hauteur": 1440
@@ -593,7 +593,7 @@
       "fichier": "/images/portfolio/portrait-barbe.jpg",
       "titre": "Portrait - Barbe",
       "titre_en": "Portrait - Beard",
-      "categorie": "personnage",
+      "categorie": "environnement",
       "vedette": false,
       "largeur": 2400,
       "hauteur": 1620
@@ -604,21 +604,6 @@
       "id": "environnement",
       "nom": "Environnements",
       "nom_en": "Environments"
-    },
-    {
-      "id": "personnage",
-      "nom": "Personnages",
-      "nom_en": "Characters"
-    },
-    {
-      "id": "hard-surface",
-      "nom": "Hard-surface",
-      "nom_en": "Hard-surface"
-    },
-    {
-      "id": "espace",
-      "nom": "Espace",
-      "nom_en": "Space"
     }
   ]
 }
