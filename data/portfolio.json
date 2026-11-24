@@ -65,6 +65,13 @@
       "hauteur": 854
     },
     {
+      "fichier": "/images/portfolio/trappist.jpg",
+      "titre": "Trappist",
+      "titre_en": "Trappist",
+      "categorie": "environnement",
+      "vedette": false
+    },
+    {
       "fichier": "/images/portfolio/ocean-violet.jpg",
       "titre": "Mer violette",
       "titre_en": "Violet Sea",
